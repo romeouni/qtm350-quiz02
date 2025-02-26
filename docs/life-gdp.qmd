@@ -1,0 +1,34 @@
+---
+title: "Life Expectancy and GDP per Capita Comparison"
+engine: jupyter
+---
+
+### Life Expectancy and GDP per Capita Comparison
+
+Here, we investigate whether there is a documented link between the life expectancy in a country and the country's GDP per capita.
+
+```{python}
+# Import necessary libraries
+import pandas as pd
+from gapminder import gapminder
+import matplotlib.pyplot as plt
+
+# Rename 'lifeExp' to 'life_expectancy' and 'gdpPercap' to 'gdp_per_capita'
+gapminder = gapminder.rename(columns={'lifeExp': 'life_expectancy',
+                                      'pop': 'population_millions', 
+                                      'gdpPercap': 'gdp_per_capita'})
+
+# Convert population to millions
+gapminder['population_millions'] = gapminder['population_millions'] / 1_000_000
+
+# Create a new pandas DataFrame from the modified gapminder data
+gapminder_df = pd.DataFrame(gapminder)
+
+plt.scatter(gapminder_df['life_expectancy'], gapminder_df['gdp_per_capita'])
+
+plt.xlabel("Life Expectancy")
+plt.ylabel("GDP per Capita")
+plt.title("Life Expectancy vs GDP per Capita")
+
+plt.show()
+```

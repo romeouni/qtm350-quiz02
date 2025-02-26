@@ -1,0 +1,53 @@
+---
+title: "Changes in Life Expectancy and Other Indicators Over Time"
+engine: jupyter
+---
+
+### Life Expectancy Comparison
+
+Here, we investigate how the life expectancy and other indicators in India change over time.
+
+```{python}
+# Import necessary libraries
+import pandas as pd
+from gapminder import gapminder
+import matplotlib.pyplot as plt
+
+# Rename 'lifeExp' to 'life_expectancy' and 'gdpPercap' to 'gdp_per_capita'
+gapminder = gapminder.rename(columns={'lifeExp': 'life_expectancy',
+                                      'pop': 'population_millions', 
+                                      'gdpPercap': 'gdp_per_capita'})
+
+# Convert population to millions
+gapminder['population_millions'] = gapminder['population_millions'] / 1_000_000
+
+# Create a new pandas DataFrame from the modified gapminder data
+gapminder_df = pd.DataFrame(gapminder)
+
+# Filter the dataset for only datapoints from India
+indiaData = gapminder_df[gapminder_df['country'] == 'India']
+
+plt.plot(indiaData['year'], indiaData['life_expectancy'], linestyle='dashed', marker='o')
+
+plt.xlabel("Year")
+plt.ylabel("Life Expectancy")
+plt.title("Life Expectancy over Time")
+
+plt.show()
+
+plt.plot(indiaData['year'], indiaData['gdp_per_capita'], linestyle='dashed', marker='o')
+
+plt.xlabel("Year")
+plt.ylabel("GDP per Capita")
+plt.title("GDP per Capita over Time")
+
+plt.show()
+
+plt.plot(indiaData['year'], indiaData['population_millions'], linestyle='dashed', marker='o')
+
+plt.xlabel("Year")
+plt.ylabel("Population (in millions)")
+plt.title("Population over Time")
+
+plt.show()
+```
