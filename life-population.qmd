@@ -5,7 +5,7 @@ engine: jupyter
 
 ### Life Expectancy and Population Comparison
 
-Here, we investigate whether there is a documented link between the life expectancy in a country and the country's population.
+Here, we investigate whether there is a link between the life expectancy in a country and the country's population.
 
 ```{python}
 # Import necessary libraries

@@ -5,7 +5,7 @@ engine: jupyter
 
 ### Life Expectancy and GDP per Capita Comparison
 
-Here, we investigate whether there is a documented link between the life expectancy in a country and the country's GDP per capita.
+Here, we investigate whether there is a link between the life expectancy in a country and the country's GDP per capita.
 
 ```{python}
 # Import necessary libraries
